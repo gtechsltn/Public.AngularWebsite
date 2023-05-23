@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <h1>Upload an image</h1>
+
+  <form class="appForm" [formGroup]="form" (ngSubmit)="onUpload()">
+    <mat-form-field>
+      <ngx-mat-file-input formControlName="image" placeholder="Select an image" ></ngx-mat-file-input>
+      <mat-icon matSuffix>folder</mat-icon>
+    </mat-form-field>
+    <button class="uploadButton" mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Upload</button>
+  </form>
+
+  <div class="links" *ngIf="isImageUplodaded">
+      <app-image-link class="link" *ngFor="let image of imageGroup.images" [imageUrl]="image.url" [imageResolution]="image.resolution"></app-image-link>
+  </div>
+
+</div>
